@@ -1545,7 +1545,8 @@ def _main():
         print("\t%s\n" % cmd)
     else:
         (status, output) = run_command_status(cmd)
-        print(output)
+        for line in output.split("\n"):
+            print(line.rstrip())
 
     if options.finish and not options.dry and status == 0:
         finish_branch(branch)
